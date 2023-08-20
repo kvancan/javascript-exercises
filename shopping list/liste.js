@@ -1,23 +1,32 @@
-function ekleme() {
 
-var bosluk = document.createElement("br");
-bosluk.innerHTML ="";
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(bosluk);
+function kopyala(){
 
+    var node = document.getElementById("referans");
+    var clone = node.cloneNode(true);
+    clone.style.display = "block";
 
-var yeniurun = document.createElement("b");
-yeniurun.innerHTML = document.getElementById("urun").value;
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(yeniurun);
+    clone.firstElementChild.innerHTML = document.getElementById("urun").value
 
-var silici = document.createElement("button");
-silici.innerHTML = "sil";
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(silici);
+    document.getElementsByTagName("body")[0].appendChild(clone);
 
+    document.getElementById("urun").value = ""
 
-
-
-    
 }
+
+function sil(buton) {
+    
+    buton.parentElement.remove();
+    
+
+}
+
+document.getElementById("urun").addEventListener("keydown", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    console.log(event.key);
+    if (event.key === "Enter") {
+        
+        kopyala();
+        
+
+    }
+  });
